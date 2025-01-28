@@ -182,6 +182,16 @@ class fixed_sized_cache
         return true;
     }
 
+    const_iterator begin() const noexcept
+    {
+        return cache_items_map.cbegin();
+    }
+
+    const_iterator end() const noexcept
+    {
+        return cache_items_map.cend();
+    }
+
   protected:
     void Clear()
     {
@@ -191,16 +201,6 @@ class fixed_sized_cache
                       [&](const std::pair<const Key, value_type> &el)
                       { cache_policy.Erase(el.first); });
         cache_items_map.clear();
-    }
-
-    const_iterator begin() const noexcept
-    {
-        return cache_items_map.cbegin();
-    }
-
-    const_iterator end() const noexcept
-    {
-        return cache_items_map.cend();
     }
 
   protected:
